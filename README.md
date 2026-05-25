@@ -1,127 +1,181 @@
-<!-- Banner Image -->
+import React from "react";
 
-<p align="center">
-  <a href="https://expo.dev/">
-    <img alt="Expo logo" height="128" src="./.github/resources/banner.png">
-    <h1 align="center">Expo</h1>
-  </a>
-</p>
+export default function EnjoyTokApp() {
+  const [selectedVideo, setSelectedVideo] = React.useState(null);
 
-<p align="center">
-   <a aria-label="SDK version" href="https://www.npmjs.com/package/expo" target="_blank">
-    <img alt="Expo SDK version" src="https://img.shields.io/npm/v/expo.svg?style=flat-square&label=SDK&labelColor=000000&color=4630EB" />
-  </a>
-  <a aria-label="Chat or ask a question" href="https://chat.expo.dev" target="_blank">
-    <img alt="Chat or ask a question" src="https://img.shields.io/discord/695411232856997968.svg?style=flat-square&labelColor=000000&color=4630EB&logo=discord&logoColor=FFFFFF&label=Chat%20with%20us" />
-  </a>
-  <a aria-label="Expo is free to use" href="https://github.com/expo/expo/blob/main/LICENSE" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-success.svg?style=flat-square&color=33CC12" target="_blank" />
-  </a>
-  <a aria-label="expo downloads" href="http://www.npmtrends.com/expo" target="_blank">
-    <img alt="Downloads" src="https://img.shields.io/npm/dm/expo.svg?style=flat-square&labelColor=gray&color=33CC12&label=Downloads" />
-  </a>
-</p>
+  const videos = [
+    {
+      id: 1,
+      user: "Enjoy Tok",
+      caption: "Bienvenue sur Enjoy Tok 🔥",
+      video: "https://www.w3schools.com/html/mov_bbb.mp4",
+    },
+    {
+      id: 2,
+      user: "Enjoy Creator",
+      caption: "Partage tes meilleures vidéos ⚽",
+      video: "https://www.w3schools.com/html/movie.mp4",
+    },
+  ];
 
-<p align="center">
-  <a aria-label="try expo with snack" href="https://snack.expo.dev"><b>Try Expo in the Browser</b></a>
-&ensp;•&ensp;
-  <a aria-label="expo documentation" href="https://docs.expo.dev">Read the Documentation</a>
-&ensp;•&ensp;
-  <a aria-label="expo documentation" href="https://expo.dev/blog">Learn more on our blog</a>
-&ensp;•&ensp;
-  <a aria-label="expo documentation" href="https://expo.canny.io/feature-requests">Request a feature</a>
-</p>
+  const handleVideoUpload = (event) => {
+    const file = event.target.files[0];
 
-<h6 align="center">Follow us on</h6>
-<p align="center">
-  <a aria-label="Follow @expo on X" href="https://x.com/intent/follow?screen_name=expo" target="_blank">
-    <img alt="Expo on X" src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" target="_blank" />
-  </a>&nbsp;
-  <a aria-label="Follow @expo on GitHub" href="https://github.com/expo" target="_blank">
-    <img alt="Expo on GitHub" src="https://img.shields.io/badge/GitHub-222222?style=for-the-badge&logo=github&logoColor=white" target="_blank" />
-  </a>&nbsp;
-  <a aria-label="Follow @expo on Reddit" href="https://www.reddit.com/r/expo/" target="_blank">
-    <img alt="Expo on Reddit" src="https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white" target="_blank" />
-  </a>&nbsp;
-  <a aria-label="Follow @expo on Bluesky" href="https://bsky.app/profile/expo.dev" target="_blank">
-    <img alt="Expo on Bluesky" src="https://img.shields.io/badge/Bluesky-1DA1F2?style=for-the-badge&logo=bluesky&logoColor=white" target="_blank" />
-  </a>&nbsp;
-  <a aria-label="Follow @expo on LinkedIn" href="https://www.linkedin.com/company/expo-dev" target="_blank">
-    <img alt="Expo on LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank" />
-  </a>
-</p>
+    if (file) {
+      const videoURL = URL.createObjectURL(file);
 
-## Introduction
+      videos.unshift({
+        id: Date.now(),
+        user: "Enjoy User",
+        caption: "New uploaded video 🔥",
+        video: videoURL,
+      });
 
-Expo is an open-source platform for making universal native apps that run on Android, iOS, and the web. It includes a universal runtime and libraries that let you build native apps by writing React and JavaScript.
+      setSelectedVideo(videoURL);
+    }
+  };
 
-This repository includes the Expo SDK, Modules API, Go app, CLI, Router, documentation, and various other supporting tools. [Expo Application Services (EAS)](https://expo.dev/eas) is a platform of hosted services that are deeply integrated with Expo open source tools. EAS helps you build, ship, and iterate on your app as an individual or a team.
+  const aiFeatures = [
+    "AI Recommendation",
+    "HD Upload",
+    "Live Streaming",
+    "Creator Earnings",
+    "Private Chat",
+    "Fast Loading Videos",
+  ];
 
-Read the [Expo Community Guidelines](https://expo.dev/guidelines) before interacting in the repository. Thank you for helping keep the Expo community open and welcoming!
+  return (
+    <div className="relative">
+      <div className="fixed inset-0 z-30 bg-black/90 flex items-center justify-center px-4">
+        <div className="bg-zinc-900 border border-red-500/30 rounded-3xl p-6 w-full max-w-sm shadow-2xl shadow-red-500/20">
+          <div className="text-center mb-6">
+            <h1 className="text-3xl font-bold text-red-500">
+              Enjoy Tok
+            </h1>
 
-## Table of contents
+            <p className="text-gray-400 text-sm mt-2">
+              Watch • Create • Share
+            </p>
+          </div>
 
-- [📚 Documentation](#-documentation)
-- [🗺 Project Layout](#-project-layout)
-- [🏅 Badges](#-badges)
-- [👏 Contributing](#-contributing)
-- [❓ FAQ](#-faq)
-- [💙 The Team](#-the-team)
-- [License](#license)
+          <div className="flex flex-col gap-4">
+            <input
+              type="email"
+              placeholder="Email"
+              className="bg-black border border-white/10 rounded-2xl px-4 py-3 outline-none text-white"
+            />
 
-## 📚 Documentation
+            <input
+              type="password"
+              placeholder="Password"
+              className="bg-black border border-white/10 rounded-2xl px-4 py-3 outline-none text-white"
+            />
 
-<p>Learn about building and deploying universal apps <a aria-label="expo documentation" href="https://docs.expo.dev">in our official docs!</a></p>
+            <label className="bg-red-500 py-3 rounded-2xl font-bold text-white shadow-lg shadow-red-500/40 cursor-pointer text-center">
+              Upload Video
+              <input
+                type="file"
+                accept="video/*"
+                className="hidden"
+                onChange={handleVideoUpload}
+              />
+            </label>
 
-- [Getting Started](https://docs.expo.dev/)
-- [API Reference](https://docs.expo.dev/versions/latest/)
-- [Using Custom Native Modules](https://docs.expo.dev/workflow/customizing/)
+            <button className="bg-white/10 py-3 rounded-2xl font-bold border border-white/10 text-white">
+              Login
+            </button>
 
-## 🗺 Project Layout
+            <button className="bg-white/10 py-3 rounded-2xl font-bold border border-white/10 text-white">
+              Create Account
+            </button>
+          </div>
+        </div>
+      </div>
 
-- [`packages`](/packages) All the source code for Expo modules, if you want to edit a library or just see how it works this is where you'll find it.
-- [`apps`](/apps) This is where you can find Expo projects which are linked to the development modules. You'll do most of your testing in here.
-- [`apps/expo-go`](/apps/expo-go) This is where you can find the source code for Expo Go.
-- [`apps/expo-go/ios/Exponent.xcworkspace`](/apps/expo-go/ios) is the Xcode workspace. When developing iOS, always open this instead of `Exponent.xcodeproj` because the workspace also loads the CocoaPods dependencies.
-- [`docs`](/docs) The source code for **https://docs.expo.dev**
-- [`templates`](/templates) The template projects you get when you run `npx create-expo-app`
-- [`react-native-lab`](/react-native-lab) This is our fork of `react-native` used to build Expo Go.
-- [`guides`](/guides) In-depth tutorials for advanced topics like contributing to the client.
-- [`tools`](/tools) contain build and configuration tools.
-- [`template-files`](/template-files) contains templates for files that require private keys. They are populated using the keys in `template-files/keys.json`.
-- [`template-files/ios/dependencies.json`](/template-files/ios/dependencies.json) specifies the CocoaPods dependencies of the app.
+      <div className="bg-black min-h-screen text-white overflow-y-scroll snap-y snap-mandatory">
+        <div className="fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-4 py-3 bg-black/70 backdrop-blur-sm border-b border-red-500/30">
+          <h1 className="text-2xl font-bold text-red-500">
+            Enjoy Tok
+          </h1>
 
-## 🏅 Badges
+          <div className="flex gap-2">
+            <button className="bg-white/10 px-4 py-2 rounded-full text-sm font-semibold border border-white/20">
+              Go Live
+            </button>
 
-Let everyone know your app can be run instantly in the _Expo Go_ app!
-<br/>
+            <button className="bg-red-500 px-4 py-2 rounded-full text-sm font-semibold shadow-lg shadow-red-500/40">
+              Login
+            </button>
+          </div>
+        </div>
 
-[![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-000.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
+        <div className="fixed left-3 top-24 z-20 bg-black/60 border border-white/10 rounded-2xl p-3 backdrop-blur-md w-44">
+          <h3 className="font-bold text-sm mb-2 text-red-400">
+            Enjoy AI
+          </h3>
 
-[![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
+          <div className="flex flex-col gap-2 text-xs text-gray-200">
+            {aiFeatures.map((feature) => (
+              <div
+                key={feature}
+                className="bg-white/10 rounded-lg px-2 py-1"
+              >
+                {feature}
+              </div>
+            ))}
+          </div>
+        </div>
 
-```md
-[![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-000.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
+        {videos.map((item) => (
+          <div
+            key={item.id}
+            className="relative h-screen w-full snap-start flex items-center justify-center"
+          >
+            <video
+              src={item.video}
+              controls
+              autoPlay
+              loop
+              className="absolute inset-0 h-full w-full object-cover"
+            />
 
-[![runs with Expo Go](https://img.shields.io/badge/Runs%20with%20Expo%20Go-4630EB.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.dev/client)
-```
+            <div className="absolute bottom-24 left-4 z-10 max-w-xs">
+              <h2 className="font-bold text-lg">
+                @{item.user}
+              </h2>
 
-## 👏 Contributing
+              <p className="text-sm mt-2">
+                {item.caption}
+              </p>
+            </div>
 
-If you like Expo and want to help make it better then check out our [contributing guide](/CONTRIBUTING.md)! Check out the [CLI package](https://github.com/expo/expo/tree/main/packages/%40expo/cli) to work on the Expo CLI.
+            <div className="absolute right-4 bottom-24 flex flex-col items-center gap-5 z-10">
+              <button className="bg-white/20 p-3 rounded-full text-xl">
+                ❤️
+              </button>
 
-## ❓ FAQ
+              <button className="bg-white/20 p-3 rounded-full text-xl">
+                💬
+              </button>
 
-If you have questions about Expo and want answers, then check out our [Frequently Asked Questions](https://docs.expo.dev/faq/)!
+              <button className="bg-white/20 p-3 rounded-full text-xl">
+                📤
+              </button>
+            </div>
+          </div>
+        ))}
 
-If you still have questions you can ask them on our [Discord and Forums](https://chat.expo.dev) or X [@expo](https://x.com/expo).
-
-## 💙 The Team
-
-Curious about who makes Expo? Here are our [team members](https://expo.dev/about)!
-
-## License
-
-The Expo source code is made available under the [MIT license](LICENSE). Some of the dependencies are licensed differently, with the BSD license, for example.
-
-<img alt="Star the Expo repo on GitHub to support the project" src="https://user-images.githubusercontent.com/9664363/185428788-d762fd5d-97b3-4f59-8db7-f72405be9677.gif" width="50%">
+        <div className="fixed bottom-0 left-0 right-0 bg-black border-t border-gray-800 flex justify-around py-4 text-sm">
+          <button>🏠 Home</button>
+          <button>🔍 Discover</button>
+          <button className="bg-red-500 px-4 py-1 rounded-full">
+            ＋
+          </button>
+          <button>📩 Inbox</button>
+          <button>👤 Profile</button>
+          <button>💰 Earn</button>
+        </div>
+      </div>
+    </div>
+  );
+}
